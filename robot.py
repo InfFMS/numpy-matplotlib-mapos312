@@ -27,10 +27,14 @@ up = 0
 down = 0
 left = 0
 right = 0
+diag1=0
+diag2=0
+diag3=0
+diag4=0
 
 # прописываем разные виды движения робота
 for i in range(100):
-    a = random.randint(1, 4)
+    a = random.randint(1, 8)
 
     if a == 1:  #вверх
         y.append(y[-1] + 1)
@@ -51,11 +55,33 @@ for i in range(100):
         x.append(x[-1] - 1)
         y.append(y[-1])
         left += 1
+
+    elif a == 5:  #диагональ вверх влево
+        x.append(x[-1] -1)
+        y.append(y[-1] +1)
+        diag1 += 1
+
+    elif a == 6:  #диагональ вниз влево
+        x.append(x[-1] - 1)
+        y.append(y[-1] -1)
+        diag2 += 1
+    elif a == 7:  #диагональ вверх вправо
+        x.append(x[-1] +1)
+        y.append(y[-1]+1)
+        diag3 += 1
+    elif a == 8:  #диагональ вниз вправо
+        x.append(x[-1] +1)
+        y.append(y[-1]-1)
+        diag4 += 1
 print('Конечное положение:', 'x =', x[-1], 'y =', y[-1])
 print('вверх:', up)
 print('вниз:', down)
 print('влево:', left)
 print('вправо:', right)
+print('диагональ вверх влево:', diag1)
+print('диагональ вниз влево:',diag2)
+print('диагональ вверх вправо:',diag3)
+print('диагональ вниз вправо:',diag4)
 
 # Расчет расстояния от начальной точки до конечной по теореме пифагора
 L = ((x[-1] - x[0]) ** 2 + (y[-1] - y[0]) ** 2) ** 0.5

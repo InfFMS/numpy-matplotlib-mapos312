@@ -21,13 +21,16 @@ count3 = 0
 count4 = 0
 count5 = 0
 count6 = 0
+count7 = 0
+count8 = 0
+count9 = 0
 streak = 1 #используем для подсчета текущей длины последовательности одинаковых бросков. Начинаем с 1, так как первый бросок уже произошел.
 q = 0 # последний бросок кубика
 streaks = []
 
-for z in range(1000):
+for _ in range(1000):
     previous_q = q
-    q = random.randint(1, 6)
+    q = random.randint(1, 9)
 
     if q == 1:
         count1 += 1
@@ -39,8 +42,14 @@ for z in range(1000):
         count4 += 1
     elif q == 5:
         count5 += 1
-    else:
+    elif q == 6:
         count6 += 1
+    elif q == 7:
+        count7 += 1
+    elif q == 8:
+        count8 +=1
+    else:
+        count9 += 1
 
     if previous_q == q:
         streak += 1
@@ -53,9 +62,8 @@ streaks.append(streak)
 
 max_streak_length = max(streaks)
 
-results = [count1, count2, count3, count4, count5, count6, max_streak_length]
-labels = ['единицы', 'двойки', 'тройки', 'четвёрки', 'пятёрки', 'шестёрки', 'макс. подряд']
-
+results = [count1, count2, count3, count4, count5, count6, count7 , count8 , count9 , max_streak_length]
+labels = ['единицы', 'двойки', 'тройки', 'четвёрки', 'пятёрки', 'шестёрки', 'семёрки', 'восьмерки', 'девяткки', 'макс. подряд']
 plt.bar(labels, results, color='green')
 plt.title('1000 бросков кубика')
 plt.show()
